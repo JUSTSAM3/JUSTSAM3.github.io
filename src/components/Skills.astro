@@ -28,18 +28,18 @@ const { heading, content } = Astro.props as Props;
             content.map((skill) => (
                 <article class="border p-3 flex flex-col justify-between">
                     <I18NDebug key={skill.title.key}>
-                        <p class="pb-2 text-green-500">
+                        <p class="pb-1 text-green-500">
                             {">"}
                             {skill.title.value}
                         </p>
                     </I18NDebug>
 
                     <I18NDebug key={skill.category.key}>
-                        <span class="text-[0.7rem] p-1 text-center bg-white/10 rounded border text-white/70 uppercase">{skill.category.value}</span>
+                        <span class="text-[0.7rem] p-1  text-white/70 uppercase">{skill.category.value}</span>
                     </I18NDebug>
 
                     <I18NDebug key={skill.description.key}>
-                        <p class="text-[0.88rem] opacity-50 py-2 border-b">{skill.description.value}</p>
+                        <p class="text-[0.88rem] opacity-50 py-2 border-b line-clamp-2">{skill.description.value}</p>
                     </I18NDebug>
 
                     <div class="flex gap-2 items-center pt-2">
