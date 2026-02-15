@@ -23,7 +23,7 @@
   },
   "skills": {
     "heading": "Habilidades",
-    "PYTHON": {
+    "python": {
       "title": "Python",
       "category": "Lenguaje",
       "description": "Resolucion de problemas de competiyivos",
