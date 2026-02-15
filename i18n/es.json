@@ -18,6 +18,11 @@
       "name": "Aprendizaje SQL",
       "description": "Ejercicios y practicas sobre sql.",
       "link": "https://github.com/JUSTSAM3/SQL_Exercises"
+    },
+      "item_2": {
+      "name": "Proyecto StardewValley",
+      "description": "Este proyecto implementa un sistema de información para la gestión de una granja tipo Stardew Valley.",
+      "link": "https://github.com/JUSTSAM3/StardewValley"
     }
 
   },
