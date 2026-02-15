@@ -8,13 +8,20 @@ interface Props {
     email_url?: Option ;
     github_label?: Option ;
     github_url?: Option ;
-    x_label?: Option ;
-    x_url?: Option ;
-    linkedin_label?: Option ;
-    linkedin_url?: Option;
+    yt_label?: Option ;
+    yt_url?: Option ;
 }
 
-const { status, email_label, email_url, github_label, github_url, x_label, x_url, linkedin_label, linkedin_url, id } = Astro.props as Props
+const { 
+    status, 
+    email_label, 
+    email_url, 
+    github_label, 
+    github_url, 
+    yt_label, 
+    yt_url,
+    id 
+} = Astro.props as Props
 ---
 
 <footer
@@ -38,20 +45,14 @@ const { status, email_label, email_url, github_label, github_url, x_label, x_url
         )}
         
         {github_url && github_label && (
-            <a href={github_url.value} rel="nofollow" >
+            <a href={github_url.value} rel="nofollow" target="_blank">
                 {github_label.value}
             </a>
         )}
 
-        {x_url && x_label && (
-            <a href={x_url.value} rel="nofollow" >
-                {x_label.value}
-            </a>
-        )}
-
-        {linkedin_url && linkedin_label && (
-            <a href={linkedin_url.value} rel="nofollow">
-                {linkedin_label.value}
+        {yt_url && yt_label && (
+            <a href={yt_url.value} rel="nofollow" target="_blank">
+                {yt_label.value}
             </a>
         )}
     </div>
