@@ -1,5 +1,5 @@
 {
-  "description": "Engineering student currently learning and applying various technologies to develop as a full stack developer",
+  "description": "Engineering student currently learning and applying various technologies to build a career in full stack development",
   "nav": {
     "about": "about me",
     "projects": "projects",
@@ -8,9 +8,9 @@
   },
   "hero": {
     "title": "Engineering student",
-    "p1": "building high-performance web applications and developer tools. Currently creating interfaces on Vercel",
-    "p2": "Previously participated in programming competitions where I gained knowledge focused on problem solving.",
-    "p3": "When I'm not programming, I research and read about new technologies."
+    "p1": "Currently pursuing an undergraduate degree in systems engineering at Universidad El Bosque",
+    "p2": "Previously, I participated in programming competitions where I gained knowledge focused on problem solving.",
+    "p3": "When I am not programming, I research and read about new technologies."
   },
   "projects": {
     "title": "Projects",
@@ -37,7 +37,7 @@
       "period": "2023 — 2024",
       "role": "Competitor",
       "company": "ICPC",
-      "description": "Participated in various competitions both local and national. Creating solutions for specific competition problems"
+      "description": "I participated in various competitions, both local and national, creating solutions for specific competition problems"
     }
   },
   "contact": {

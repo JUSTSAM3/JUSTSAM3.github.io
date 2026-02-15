@@ -1,5 +1,5 @@
 {
-  "description": "Estudiante de ingenieria actualmente aprendiendo y aplicando diversas tecnologias para forjarser en el desarollo full stack",
+  "description": "Estudiante de ingenieria actualmente aprendiendo y aplicando diversas tecnologias para forjarse en el desarrollo full stack",
   "nav": {
     "about": "sobre mí",
     "projects": "proyectos",
@@ -8,14 +8,14 @@
   },
   "hero": {
     "title": "Estudiante de ingenieria",
-    "p1": "construyendo aplicaciones web de alto rendimiento y herramientas para desarrolladores. Actualmente creando interfaces en Vercel",
-    "p2": "Anteriormente participe en competencias de programacion en donde adquiri conocimentos enfocados a la resolucion de problemas.",
+    "p1": "Actualmente cursando el pregrado de ingenieria en sistemas en la universidad el bosque",
+    "p2": "Anteriormente participe en competencias de programacion en donde adquiri conocimientos enfocados a la resolucion de problemas.",
     "p3": "Cuando no estoy programando, investigo y leo sobre nuevas tecnologias."
   },
   "projects": {
     "title": "Proyectos",
     "item_1": {
-      "name": "Aprendisaje SQL",
+      "name": "Aprendizaje SQL",
       "description": "Ejercicios y practicas sobre sql.",
       "link": "https://github.com/JUSTSAM3/SQL_Exercises"
     }
