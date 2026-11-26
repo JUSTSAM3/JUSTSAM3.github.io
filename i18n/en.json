@@ -23,6 +23,11 @@
       "name": "Proyect StardewValley",
       "description": "This project implements an information system for managing a farm like Stardew Valley.",
       "link": "https://github.com/JUSTSAM3/StardewValley"
+    },
+    "item_3": {
+      "name": "Event Space Reservation System",
+      "description": "Web system with polyglot persistence (PostgreSQL and MongoDB), Spring Boot (Java 21) backend, Angular frontend, and Docker deployment.",
+      "link": "https://github.com/JUSTSAM3/BasesDeDatos2"
     }
 
   },

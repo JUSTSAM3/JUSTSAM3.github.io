@@ -23,6 +23,11 @@
       "name": "Proyecto StardewValley",
       "description": "Este proyecto implementa un sistema de información para la gestión de una granja tipo Stardew Valley.",
       "link": "https://github.com/JUSTSAM3/StardewValley"
+    },
+    "item_3": {
+      "name": "Gestión de Reservas de Espacios",
+      "description": "Sistema web con persistencia políglota (PostgreSQL y MongoDB), backend en Spring Boot (Java 21), frontend en Angular y despliegue con Docker.",
+      "link": "https://github.com/JUSTSAM3/BasesDeDatos2"
     }
 
   },
