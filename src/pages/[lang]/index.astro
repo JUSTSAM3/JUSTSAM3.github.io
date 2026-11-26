@@ -6,11 +6,14 @@ export const getStaticPaths = () => {
   ];
 };
 
+import { getCollection } from "astro:content";
 import Layout from "@/src/layouts/Layout.astro";
 import { useI18n } from "@ariaskit/astro-i18n";
 import { type LocaleSchema } from "@/src/types";
 import Header from "@/src/components/Header.astro";
 import Hero from "@/src/components/Hero.astro";
+import Evidences from "@/src/components/Evidences.astro";
+import Research from "@/src/components/Research.astro";
 import Projects from "@/src/components/Projects.astro";
 import Experience from "@/src/components/Experience.astro";
 import Footer from "@/src/components/Footer.astro";
@@ -22,20 +25,37 @@ const { t, locale } = useI18n<LocaleSchema>({
   },
 });
 
+const evidenciasItems = (await getCollection("evidencias"))
+  .filter((entry) => entry.data.lang === locale)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const investigacionItems = (await getCollection("investigacion"))
+  .filter((entry) => entry.data.lang === locale)
+  .sort((a, b) => a.data.order - b.data.order);
+
 const nav = [
-  { path: `/`, text: t("nav.about") },
-  { path: `#${t("nav.experience")}`, text: t("nav.experience") },
-  { path: `#${t("nav.projects")}`, text: t("nav.projects") },
-  { path: `#${t("nav.contact")}`, text: t("nav.contact") },
+  { key: "nav.about", path: "", text: t("nav.about") },
+  { key: "nav.evidences", path: "#evidences", text: t("nav.evidences") },
+  { key: "nav.research", path: "#research", text: t("nav.research") },
+  { key: "nav.projects", path: "#projects", text: t("nav.projects") },
+  { key: "nav.contact", path: "#contact", text: t("nav.contact") },
 ];
 
 const heroProps = {
+  id: "about",
   name: "SAMUEL MESA",
   title: { key: "hero.title", value: t("hero.title") },
   p1: { key: "hero.p1", value: t("hero.p1") },
   p2: { key: "hero.p2", value: t("hero.p2") },
   p3: { key: "hero.p3", value: t("hero.p3") },
 };
+
+const evidenceCategories = [
+  { id: "sql-avanzado" as const, label: t("evidences.categories.sql_avanzado") },
+  { id: "plsql" as const, label: t("evidences.categories.plsql") },
+  { id: "postgresql" as const, label: t("evidences.categories.postgresql") },
+  { id: "mongodb" as const, label: t("evidences.categories.mongodb") },
+];
 
 const projects = [
   {
@@ -58,15 +78,17 @@ const projects = [
     name: t("projects.item_3.name"),
     description: t("projects.item_3.description"),
     link: t("projects.item_3.link"),
-  }
+  },
 ];
 
 const projectsProps = {
+  id: "projects",
   title: { key: "projects.title", value: t("projects.title") },
   projects,
 };
 
 const experienceData = {
+  id: "experience",
   title: {
     key: "experience.title",
     value: t("experience.title"),
@@ -99,7 +121,7 @@ const alternate = [
 ];
 
 const footerContent = {
-  id: t("nav.contact").toLowerCase(),
+  id: "contact",
   status: {
     key: "contact.status",
     value: t("contact.status"),
@@ -130,21 +152,19 @@ const footerContent = {
   },
 };
 
-const skills = [
-  {
-    title: { key: "skills.python.title", value: t("skills.python.title") },
-    category: { key: "skills.python.category", value: t("skills.python.category") },
-    description: { key: "skills.python.description", value: t("skills.python.description") },
-    experience_years: { key: "skills.python.experience_years", value: t("skills.python.experience_years") },
-    experience_label: { key: "skills.python.experience_label", value: t("skills.python.experience_label") },
-  }
-];
-
+const skillKeys = ["java", "python", "docker"] as const;
+const skills = skillKeys.map((k) => ({
+  title: { key: `skills.${k}.title`, value: t(`skills.${k}.title` as any) },
+  category: { key: `skills.${k}.category`, value: t(`skills.${k}.category` as any) },
+  description: { key: `skills.${k}.description`, value: t(`skills.${k}.description` as any) },
+  experience_years: { key: `skills.${k}.experience_years`, value: t(`skills.${k}.experience_years` as any) },
+  experience_label: { key: `skills.${k}.experience_label`, value: t(`skills.${k}.experience_label` as any) },
+}));
 ---
 
 <Layout
   locale={locale}
-  title="Void"
+  title={t("meta.title")}
   description={t("description")}
   alternateLinks={alternate}
 >
@@ -152,9 +172,26 @@ const skills = [
 
   <main>
     <Hero {...heroProps} />
+    <Evidences
+      id="evidences"
+      locale={locale}
+      heading={{ key: "evidences.heading", value: t("evidences.heading") }}
+      subtitle={{ key: "evidences.subtitle", value: t("evidences.subtitle") }}
+      readMoreLabel={t("evidences.read_more")}
+      categories={evidenceCategories}
+      items={evidenciasItems}
+    />
+    <Research
+      id="research"
+      locale={locale}
+      heading={{ key: "research.heading", value: t("research.heading") }}
+      subtitle={{ key: "research.subtitle", value: t("research.subtitle") }}
+      readMoreLabel={t("research.read_more")}
+      items={investigacionItems}
+    />
     <Projects {...projectsProps} />
     <Experience {...experienceData} />
-    <Skills heading={{key: "skills.heading", value: t("skills.heading")}} content={skills} />
+    <Skills heading={{ key: "skills.heading", value: t("skills.heading") }} content={skills} />
   </main>
 
   <Footer {...footerContent} />

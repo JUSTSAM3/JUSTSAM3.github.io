@@ -11,19 +11,20 @@ type Item = {
 };
 
 interface Props {
+    id?: string;
     title: { key: string; value: string };
     projects: Item[];
 }
 
-const { title, projects } = Astro.props as Props;
+const { id, title, projects } = Astro.props as Props;
 ---
 
-<section id={title.value.toLowerCase()} class="scroll-mt-50">
+<section id={id ?? title.value.toLowerCase()} class="mt-20 scroll-mt-36">
     <I18NDebug key={title.key}>
-        <h2 class="opacity-50 uppercase mb-6">{title.value}</h2>
+        <h2 class="opacity-65 uppercase mb-6">{title.value}</h2>
     </I18NDebug>
 
-    <ul class="space-y-3">
+    <ul class="space-y-4">
         {
             projects.map((project) => (
                 <li class="group">
@@ -33,22 +34,19 @@ const { title, projects } = Astro.props as Props;
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                name={project.name}
-                                class="mb-5 font-semibold transition-all duration-200 group-hover:text-green-500 "
+                                class="mb-5 font-semibold transition-all duration-200 group-hover:text-green-500"
                             >
                                 {project.name}
                             </a>
                         ) : (
-                            <span
-                                class="mb-5 font-semibold transition-all duration-200 group-hover:text-green-500 "
-                            >
+                            <span class="mb-5 font-semibold transition-all duration-200 group-hover:text-green-500">
                                 {project.name}
                             </span>
                         )}
-                        <Arrow class="h-3 w-3 inline transition-all text-green-500  duration-200 invisible opacity-0 group-hover:visible group-hover:opacity-100" />
+                        <Arrow class="h-3 w-3 inline transition-all text-green-500 duration-200 invisible opacity-0 group-hover:visible group-hover:opacity-100" />
                     </I18NDebug>
                     <I18NDebug key={project.descriptionKey}>
-                        <p class="opacity-50 text-[0.88rem]">
+                        <p class="opacity-70 text-[0.88rem] mt-1">
                             {project.description}
                         </p>
                     </I18NDebug>

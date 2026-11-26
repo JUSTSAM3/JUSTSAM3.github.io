@@ -1,27 +1,51 @@
 {
-  "description": "Engineering student currently learning and applying various technologies to build a career in full stack development",
+  "meta": {
+    "title": "Samuel Mesa — E-Portfolio"
+  },
+  "description": "Systems Engineering student at Universidad El Bosque. E-portfolio documenting advanced SQL, PL/SQL, PostgreSQL, MongoDB, and full stack projects.",
   "nav": {
     "about": "about me",
+    "evidences": "evidences",
+    "research": "research",
     "projects": "projects",
-    "experience": "experience",
     "contact": "contact"
   },
   "hero": {
     "title": "Engineering student",
-    "p1": "Currently pursuing an undergraduate degree in systems engineering at Universidad El Bosque",
-    "p2": "Previously, I participated in programming competitions where I gained knowledge focused on problem solving.",
-    "p3": "When I am not programming, I research and read about new technologies."
+    "p1": "Currently pursuing an undergraduate degree in Systems Engineering at Universidad El Bosque.",
+    "p2": "Previously, I participated in programming competitions where I built strong foundations in algorithmic problem solving.",
+    "p3": "When I am not coding, I research databases, concurrency control, and new technologies."
+  },
+  "evidences": {
+    "heading": "Evidences",
+    "subtitle": "Representative exercises in advanced SQL, PL/SQL, PostgreSQL, and MongoDB documented with context, design decisions, and links to source code.",
+    "read_more": "View evidence",
+    "view_code": "View full script on GitHub",
+    "back_home": "Back to portfolio",
+    "categories": {
+      "sql_avanzado": "Advanced SQL (Oracle)",
+      "plsql": "PL/SQL (Oracle)",
+      "postgresql": "PostgreSQL / PL/pgSQL",
+      "mongodb": "MongoDB (NoSQL)"
+    }
+  },
+  "research": {
+    "heading": "Research & Deep Dives",
+    "subtitle": "Technical notes exploring topics applied during the semester: GiST indexes, database engine comparisons, and NoSQL modeling patterns.",
+    "read_more": "Read technical note",
+    "view_code": "View implementation on GitHub",
+    "back_home": "Back to portfolio"
   },
   "projects": {
     "title": "Projects",
     "item_1": {
-      "name": "SQL Learning",
-      "description": "Exercises and practice on SQL.",
+      "name": "SQL, PL/SQL & MongoDB Exercises",
+      "description": "Modular repository covering advanced SQL, PL/SQL (triggers, cursors, packages), and MongoDB MQL & document modeling.",
       "link": "https://github.com/JUSTSAM3/SQL_Exercises"
     },
-        "item_2": {
-      "name": "Proyect StardewValley",
-      "description": "This project implements an information system for managing a farm like Stardew Valley.",
+    "item_2": {
+      "name": "Stardew Valley Project",
+      "description": "Information system built with PostgreSQL and Flask for managing a Stardew Valley-style farm.",
       "link": "https://github.com/JUSTSAM3/StardewValley"
     },
     "item_3": {
@@ -29,25 +53,38 @@
       "description": "Web system with polyglot persistence (PostgreSQL and MongoDB), Spring Boot (Java 21) backend, Angular frontend, and Docker deployment.",
       "link": "https://github.com/JUSTSAM3/BasesDeDatos2"
     }
-
   },
   "skills": {
     "heading": "Skills",
+    "java": {
+      "title": "Java & Spring Boot",
+      "category": "Backend",
+      "description": "Layered REST APIs with polyglot SQL and NoSQL persistence",
+      "experience_years": "1",
+      "experience_label": "year of experience"
+    },
     "python": {
       "title": "Python",
       "category": "Language",
-      "description": "Competitive problem solving",
+      "description": "Competitive programming problem solving and Flask web APIs",
       "experience_years": "1",
-      "experience_label": "years of experience"
+      "experience_label": "year of experience"
+    },
+    "docker": {
+      "title": "Docker & Git",
+      "category": "Infrastructure",
+      "description": "Containerized stacks with Docker Compose and collaborative version control",
+      "experience_years": "1",
+      "experience_label": "year of experience"
     }
   },
-    "experience": {
+  "experience": {
     "title": "Experience",
     "item_1": {
       "period": "2023 — 2024",
       "role": "Competitor",
       "company": "ICPC",
-      "description": "I participated in various competitions, both local and national, creating solutions for specific competition problems"
+      "description": "Participated in local and national programming competitions, designing algorithmic solutions under strict time constraints."
     }
   },
   "contact": {

@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
+import Arrow from "@lucide/astro/icons/corner-right-up";
+
+interface Props {
+    id?: string;
+    locale: string;
+    heading: { key: string; value: string };
+    subtitle: { key: string; value: string };
+    readMoreLabel: string;
+    items: CollectionEntry<"investigacion">[];
+}
+
+const { id = "research", locale, heading, subtitle, readMoreLabel, items } = Astro.props as Props;
+---
+
+<section id={id} class="mt-20 scroll-mt-36">
+    <I18NDebug key={heading.key}>
+        <h2 class="opacity-65 uppercase mb-2">{heading.value}</h2>
+    </I18NDebug>
+    <I18NDebug key={subtitle.key}>
+        <p class="text-[0.85rem] opacity-70 mb-6">{subtitle.value}</p>
+    </I18NDebug>
+
+    <div class="grid grid-cols-1 gap-3">
+        {
+            items.map((entry) => (
+                <a
+                    href={`/${locale}/investigacion/${entry.data.slugKey}`}
+                    class="group block border p-4 rounded-sm transition-colors duration-200 hover:border-green-500/60"
+                >
+                    <div class="flex items-start justify-between gap-3">
+                        <h3 class="font-semibold text-[0.95rem] transition-colors duration-200 group-hover:text-green-500">
+                            {entry.data.title}
+                        </h3>
+                        <Arrow class="h-3.5 w-3.5 shrink-0 mt-1 text-green-500 opacity-50 transition-all duration-200 group-hover:opacity-100" />
+                    </div>
+                    <p class="text-[0.83rem] opacity-70 mt-1.5 leading-6">
+                        {entry.data.summary}
+                    </p>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2 border-t border-border/60">
+                        <div class="flex flex-wrap gap-1.5">
+                            {entry.data.tags.map((tag) => (
+                                <span class="text-[0.68rem] px-1.5 py-0.5 bg-secondary text-foreground/75 rounded-xs">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                        <span class="text-[0.75rem] text-green-500/80 group-hover:text-green-500">
+                            {readMoreLabel}
+                        </span>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+</section>

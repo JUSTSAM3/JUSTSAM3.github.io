@@ -1,27 +1,51 @@
 {
-  "description": "Estudiante de ingenieria actualmente aprendiendo y aplicando diversas tecnologias para forjarse en el desarrollo full stack",
+  "meta": {
+    "title": "Samuel Mesa — E-Portafolio"
+  },
+  "description": "Estudiante de Ingeniería de Sistemas en la Universidad El Bosque. Portafolio y evidencias de SQL avanzado, PL/SQL, PostgreSQL, MongoDB y desarrollo full stack.",
   "nav": {
     "about": "sobre mí",
+    "evidences": "evidencias",
+    "research": "investigación",
     "projects": "proyectos",
-    "experience": "experiencia",
     "contact": "contacto"
   },
   "hero": {
-    "title": "Estudiante de ingenieria",
-    "p1": "Actualmente cursando el pregrado de ingenieria en sistemas en la universidad el bosque",
-    "p2": "Anteriormente participe en competencias de programacion en donde adquiri conocimientos enfocados a la resolucion de problemas.",
-    "p3": "Cuando no estoy programando, investigo y leo sobre nuevas tecnologias."
+    "title": "Estudiante de ingeniería",
+    "p1": "Actualmente cursando el pregrado de Ingeniería de Sistemas en la Universidad El Bosque.",
+    "p2": "Anteriormente participé en competencias de programación donde adquirí conocimientos enfocados en la resolución de problemas.",
+    "p3": "Cuando no estoy programando, investigo sobre bases de datos, concurrencia y nuevas tecnologías."
+  },
+  "evidences": {
+    "heading": "Evidencias",
+    "subtitle": "Ejercicios representativos de SQL avanzado, PL/SQL, PostgreSQL y MongoDB documentados con contexto, decisiones de diseño y enlaces al código fuente.",
+    "read_more": "Ver evidencia",
+    "view_code": "Ver script completo en GitHub",
+    "back_home": "Volver al portafolio",
+    "categories": {
+      "sql_avanzado": "SQL Avanzado (Oracle)",
+      "plsql": "PL/SQL (Oracle)",
+      "postgresql": "PostgreSQL / PL/pgSQL",
+      "mongodb": "MongoDB (NoSQL)"
+    }
+  },
+  "research": {
+    "heading": "Investigación y Profundización",
+    "subtitle": "Notas técnicas sobre temas aplicados en el semestre: índices GiST, comparación de motores y patrones de modelado NoSQL.",
+    "read_more": "Leer nota técnica",
+    "view_code": "Ver implementación en GitHub",
+    "back_home": "Volver al portafolio"
   },
   "projects": {
     "title": "Proyectos",
     "item_1": {
-      "name": "Aprendizaje SQL",
-      "description": "Ejercicios y practicas sobre sql.",
+      "name": "SQL, PL/SQL & MongoDB Exercises",
+      "description": "Repositorio modular con ejercicios de SQL avanzado, PL/SQL (triggers, cursores, paquetes) y modelado/MQL en MongoDB.",
       "link": "https://github.com/JUSTSAM3/SQL_Exercises"
     },
-      "item_2": {
+    "item_2": {
       "name": "Proyecto StardewValley",
-      "description": "Este proyecto implementa un sistema de información para la gestión de una granja tipo Stardew Valley.",
+      "description": "Sistema de información en PostgreSQL y Flask para la gestión integral de una granja tipo Stardew Valley.",
       "link": "https://github.com/JUSTSAM3/StardewValley"
     },
     "item_3": {
@@ -29,25 +53,38 @@
       "description": "Sistema web con persistencia políglota (PostgreSQL y MongoDB), backend en Spring Boot (Java 21), frontend en Angular y despliegue con Docker.",
       "link": "https://github.com/JUSTSAM3/BasesDeDatos2"
     }
-
   },
   "skills": {
     "heading": "Habilidades",
+    "java": {
+      "title": "Java & Spring Boot",
+      "category": "Backend",
+      "description": "APIs REST con arquitectura en capas y persistencia políglota SQL/NoSQL",
+      "experience_years": "1",
+      "experience_label": "año de experiencia"
+    },
     "python": {
       "title": "Python",
       "category": "Lenguaje",
-      "description": "Resolucion de problemas de competicion",
+      "description": "Resolución de problemas de competición y APIs web con Flask",
       "experience_years": "1",
-      "experience_label": "años de experiencia"
+      "experience_label": "año de experiencia"
+    },
+    "docker": {
+      "title": "Docker & Git",
+      "category": "Infraestructura",
+      "description": "Contenedores con Docker Compose y control de versiones colaborativo",
+      "experience_years": "1",
+      "experience_label": "año de experiencia"
     }
   },
-    "experience": {
+  "experience": {
     "title": "Experiencia",
     "item_1": {
       "period": "2023 — 2024",
       "role": "Competidor",
       "company": "ICPC",
-      "description": "Participe en diversas competencias tanto locales como nacionales.Creando soluciones para problemas especificos de competicion"
+      "description": "Participé en competencias locales y nacionales de programación competitiva, diseñando soluciones algorítmicas bajo restricciones de tiempo."
     }
   },
   "contact": {

@@ -1,0 +1,125 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "@/src/layouts/Layout.astro";
+import Header from "@/src/components/Header.astro";
+import Footer from "@/src/components/Footer.astro";
+import { useI18n } from "@ariaskit/astro-i18n";
+import { type LocaleSchema } from "@/src/types";
+import ArrowLeft from "@lucide/astro/icons/arrow-left";
+import ArrowUpRight from "@lucide/astro/icons/corner-right-up";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("investigacion");
+  return entries.map((entry) => ({
+    params: { lang: entry.data.lang, slug: entry.data.slugKey },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { t, locale } = useI18n<LocaleSchema>({
+  ssg: {
+    astro: Astro,
+    locale: entry.data.lang,
+  },
+});
+
+const nav = [
+  { key: "nav.about", path: "", text: t("nav.about") },
+  { key: "nav.evidences", path: "#evidences", text: t("nav.evidences") },
+  { key: "nav.research", path: "#research", text: t("nav.research") },
+  { key: "nav.projects", path: "#projects", text: t("nav.projects") },
+  { key: "nav.contact", path: "#contact", text: t("nav.contact") },
+];
+
+const alternate = [
+  { href: `/es/investigacion/${entry.data.slugKey}`, hreflang: "es" },
+  { href: `/en/investigacion/${entry.data.slugKey}`, hreflang: "en" },
+];
+
+const footerContent = {
+  id: "contact",
+  status: { key: "contact.status", value: t("contact.status") },
+  email_label: { key: "contact.email_label", value: t("contact.email_label") },
+  email_url: { key: "contact.email_url", value: t("contact.email_url") },
+  github_label: { key: "contact.github_label", value: t("contact.github_label") },
+  github_url: { key: "contact.github_url", value: t("contact.github_url") },
+  yt_label: { key: "contact.yt_label", value: t("contact.yt_label") },
+  yt_url: { key: "contact.yt_url", value: t("contact.yt_url") },
+};
+---
+
+<Layout
+  locale={locale}
+  title={`${entry.data.title} — ${t("meta.title")}`}
+  description={entry.data.summary}
+  alternateLinks={alternate}
+>
+  <Header
+    nav={nav}
+    locales={["en", "es"]}
+    currentLocale={locale}
+    localeSuffix={`/investigacion/${entry.data.slugKey}`}
+  />
+
+  <main class="mt-40 md:mt-44">
+    <article>
+      <a
+        href={`/${locale}#research`}
+        class="inline-flex items-center gap-2 text-xs opacity-65 hover:opacity-100 hover:text-green-500 transition-colors mb-6"
+      >
+        <ArrowLeft class="h-3.5 w-3.5" />
+        <span>{t("research.back_home")}</span>
+      </a>
+
+      <header class="mb-8 pb-6 border-b border-border">
+        <p class="text-xs uppercase tracking-wider text-green-500 mb-2">
+          {`> ${t("research.heading")}`}
+        </p>
+        <h1 class="text-xl md:text-2xl font-semibold leading-snug mb-3">
+          {entry.data.title}
+        </h1>
+        <p class="text-sm opacity-75 leading-6 mb-4">
+          {entry.data.summary}
+        </p>
+        <div class="flex flex-wrap gap-1.5">
+          {entry.data.tags.map((tag) => (
+            <span class="text-[0.7rem] px-2 py-0.5 bg-secondary text-foreground/80 rounded-xs">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div class="article-content">
+        <Content />
+      </div>
+
+      <div class="mt-10 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4">
+        <a
+          href={`/${locale}#research`}
+          class="inline-flex items-center gap-2 text-xs opacity-70 hover:opacity-100 hover:text-green-500 transition-colors"
+        >
+          <ArrowLeft class="h-3.5 w-3.5" />
+          <span>{t("research.back_home")}</span>
+        </a>
+
+        {entry.data.repoUrl && (
+          <a
+            href={entry.data.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 border border-green-500/60 text-green-500 rounded-sm hover:bg-green-500/10 transition-colors"
+          >
+            <span>{entry.data.repoLabel || t("research.view_code")}</span>
+            <ArrowUpRight class="h-3.5 w-3.5" />
+          </a>
+        )}
+      </div>
+    </article>
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>

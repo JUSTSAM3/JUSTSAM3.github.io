@@ -2,42 +2,63 @@
 import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
 import { cls } from "@/src/lib/utils";
 
-type Locales = "es" | "en" 
+type Locales = "es" | "en";
 
-interface Props {
-    nav:{path:string;text:string}[];
-    locales: Locales[];
-    currentLocale:string
+interface NavItem {
+    key: string;
+    path: string;
+    text: string;
 }
 
-const { nav, locales, currentLocale } = Astro.props as Props
+interface Props {
+    nav: NavItem[];
+    locales: Locales[];
+    currentLocale: string;
+    localeSuffix?: string;
+}
 
+const { nav, locales, currentLocale, localeSuffix = "" } = Astro.props as Props;
+
+const resolveNavHref = (path: string) => {
+    if (path === "") return `/${currentLocale}`;
+    if (path.startsWith("#")) return `/${currentLocale}${path}`;
+    return `/${currentLocale}/${path}`;
+};
 ---
 
-<header class="py-15 flex items-center justify-between flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40">
-    <div class="flex items-center gap-5 order-2 md:order-1">
+<header class="py-10 md:py-12 flex items-center justify-between flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40">
+    <nav aria-label="Main navigation" class="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-5 order-2 md:order-1">
         {
             nav.map((item) => (
-                <I18NDebug key={item.text}>
+                <I18NDebug key={item.key}>
                     <a
-                        class="opacity-50 transition-all duration-200 hover:opacity-100 text-[1rem] md:text-[0.85rem]"
-                        href={`/${currentLocale}/${item.path}`}
+                        class="opacity-65 transition-all duration-200 hover:opacity-100 hover:text-green-500 text-[0.95rem] md:text-[0.85rem]"
+                        href={resolveNavHref(item.path)}
                     >
                         {item.text}
                     </a>
                 </I18NDebug>
             ))
         }
-    </div>
-    <div class="order-1 md:order-2 mb-4 md:mb-0 space-x-2 md:space-x-0" >
+    </nav>
+    <div class="order-1 md:order-2 mb-3 md:mb-0 space-x-2 md:space-x-1">
         {
-            locales.map(item =>
-                <a href={`/${item.toLowerCase()}`} class={cls("uppercase text-[1.2rem] md:text-[0.9rem] hover:opacity-100 cursor-pointer opacity-70 transition-all duration-200", item === currentLocale.toLowerCase() && "opacity-100")}>
-                    {item}
-                </a>
-                <span class="last:hidden opacity-50 text-[1.2rem] md:text-[0.9rem]">/</span>
-            )
+            locales.map((item) => (
+                <>
+                    <a
+                        href={`/${item.toLowerCase()}${localeSuffix}`}
+                        aria-current={item === currentLocale.toLowerCase() ? "page" : undefined}
+                        class={cls(
+                            "uppercase text-[1.1rem] md:text-[0.9rem] hover:opacity-100 cursor-pointer opacity-60 transition-all duration-200",
+                            item === currentLocale.toLowerCase() && "opacity-100 text-green-500 font-semibold"
+                        )}
+                    >
+                        {item}
+                    </a>
+                    <span class="last:hidden opacity-40 text-[1.1rem] md:text-[0.9rem]">/</span>
+                </>
+            ))
         }
     </div>
-    <div class="absolute -bottom-10 left-0 w-full h-18  pointer-events-none bg-linear-to-b from-background via-background/80 to-background/20 z-10"></div>
+    <div class="absolute -bottom-8 left-0 w-full h-12 pointer-events-none bg-linear-to-b from-background via-background/80 to-transparent z-10"></div>
 </header>

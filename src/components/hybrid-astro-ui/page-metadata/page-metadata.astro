@@ -118,9 +118,11 @@ const {
 
 <meta property="og:locale" content={lang} />
 {
-  alternateLinks.map(link => (
-    <meta property="og:locale:alternate" content={link.hreflang} />
-  ))
+  alternateLinks
+    .filter(link => link.hreflang !== lang)
+    .map(link => (
+      <meta property="og:locale:alternate" content={link.hreflang} />
+    ))
 }
 
 <meta property="twitter:card" content="summary_large_image" />
